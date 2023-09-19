@@ -17,17 +17,19 @@ class _MainScreenState extends State<MainScreen> {
     _selectedTab = index;
     setState(() {});
   }
-  static const List<Widget> _widgets = [
-    Text('news'),
-    MovieListWidget(),
-    Text('TV shows'),
-  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: appBar(),
       drawer: drawer(context),
-      body: Center(child:_widgets[_selectedTab]),
+      body: IndexedStack(
+        index: _selectedTab,
+        children:const  [
+          Text('News'),
+          MovieListWidget(),
+          Text('TV Shows')       
+      ]
+      ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedTab,
         items: const [
