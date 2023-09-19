@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:themovedb/widgets/main_screen/main_screen.dart';
 
 import 'widgets/auth/auth_wiget.dart';
 
@@ -26,7 +27,17 @@ class _MyAppState extends State<MyApp> {
           foregroundColor: Colors.white 
         ),
       ),
-      home: const AuthWidget(),
+      routes: {
+        '/auth' :(context) => const AuthWidget(),
+        '/main_screen':(context) =>const  MainScreen()
+      },
+      initialRoute: '/auth',
+      onGenerateRoute: (settings) => MaterialPageRoute(
+        builder: (context)=>
+        const Scaffold(
+          body: Center(child: Text('Something went wrong')),
+            )
+          ),
     );
   }
 }
