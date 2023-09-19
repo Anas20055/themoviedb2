@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:themovedb/widgets/common/common_widgets.dart';
+import 'package:themovedb/widgets/movie_list_widget/movie_list_widget.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -10,14 +11,15 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   // ignore: unused_field
-  int  _selectedTab = 0;
+  int  _selectedTab = 1;
   void _onSelecedTab (int index){
+    if(_selectedTab == index) return;
     _selectedTab = index;
     setState(() {});
   }
   static const List<Widget> _widgets = [
     Text('news'),
-    Text('movies'),
+    MovieListWidget(),
     Text('TV shows'),
   ];
   @override

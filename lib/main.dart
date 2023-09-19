@@ -31,7 +31,8 @@ class _MyAppState extends State<MyApp> {
           backgroundColor: AppColors.backgroundColor,
           selectedItemColor: Colors.white,
           unselectedItemColor: Colors.grey
-        )
+        ),
+
       ),
       routes: {
         '/auth' :(context) => const AuthWidget(),
