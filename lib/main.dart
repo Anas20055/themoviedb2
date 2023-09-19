@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:themovedb/Theme/app_colors.dart';
 import 'package:themovedb/widgets/main_screen/main_screen.dart';
 
 import 'widgets/auth/auth_wiget.dart';
@@ -22,10 +23,15 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         useMaterial3: false,
         appBarTheme: const  AppBarTheme(
-          backgroundColor: Color.fromRGBO(3, 37, 65, 1),
+          backgroundColor: AppColors.backgroundColor,
           centerTitle: true,
           foregroundColor: Colors.white 
         ),
+        bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+          backgroundColor: AppColors.backgroundColor,
+          selectedItemColor: Colors.white,
+          unselectedItemColor: Colors.grey
+        )
       ),
       routes: {
         '/auth' :(context) => const AuthWidget(),
