@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:themovedb/Theme/app_colors.dart';
 import 'package:themovedb/widgets/main_screen/main_screen.dart';
+import 'package:themovedb/widgets/movie_details/movie_details_widget.dart';
 
 import 'widgets/auth/auth_wiget.dart';
 
@@ -36,7 +37,11 @@ class _MyAppState extends State<MyApp> {
       ),
       routes: {
         '/auth' :(context) => const AuthWidget(),
-        '/main_screen':(context) =>const  MainScreen()
+        '/main_screen':(context) =>const  MainScreen(),
+        '/main_screen/movie_details':(context){
+          final  id = ModalRoute.of(context)!.settings.arguments as int;
+          return MovieDetailsWidget(movieId: id,);
+          }
       },
       initialRoute: '/auth',
       onGenerateRoute: (settings) => MaterialPageRoute(

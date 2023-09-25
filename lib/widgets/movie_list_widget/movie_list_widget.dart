@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 
 class Movie {
+  final int id;
   final String imagePath;
   final String title;
   final String time;
   final String description;
 
   Movie({
+    required this.id,
     required this.imagePath,
     required this.title, 
     required this.time,
@@ -22,28 +24,31 @@ class MovieListWidget extends StatefulWidget {
   @override
   State<MovieListWidget> createState() => _MovieListWidgetState();
 }
-
 class _MovieListWidgetState extends State<MovieListWidget> {
   final _movies = [
     Movie(
+      id:1,
       imagePath: 'assets/images/movie.jpg',
       title:'Spider-Man: Across the Spider-Verse',
       time:'May 31, 2023',
       description: 'After reuniting with Gwen Stacy, Brooklyn’s full-time, friendly neighborhood'
       ),
     Movie(
+      id:2,
       imagePath: 'assets/images/movie.jpg',
       title:'Flash',
       time:'May 31, 2023',
       description: 'After reuniting with Gwen Stacy, Brooklyn’s full-time, friendly neighborhood'
       ),
     Movie(
+      id:3,
       imagePath: 'assets/images/movie.jpg',
       title:'Captain America',
       time:'May 31, 2023',
       description: 'After reuniting with Gwen Stacy, Brooklyn’s full-time, friendly neighborhood'
       ),
     Movie(
+      id:4,
       imagePath: 'assets/images/movie.jpg',
       title:'Iron-man',
       time:'May 31, 2023',
@@ -73,6 +78,10 @@ class _MovieListWidgetState extends State<MovieListWidget> {
     _searchController.addListener(_searchMovies);
   }
 
+  void _onMovieTab(int index){
+    int id = _filteredMovies[index].id;
+    Navigator.of(context).pushNamed('/main_screen/movie_details',arguments: id);
+  }
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -142,7 +151,7 @@ class _MovieListWidgetState extends State<MovieListWidget> {
                   Material(
                     color: Colors.transparent,
                     child: InkWell(
-                      onTap: (){},
+                      onTap: ()=>_onMovieTab(index),
                     ),
                   ),
               ],
