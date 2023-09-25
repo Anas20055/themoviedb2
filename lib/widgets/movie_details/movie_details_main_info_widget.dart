@@ -25,24 +25,24 @@ class _TopPosterWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        SizedBox(
-          height: 180,
-          child: FittedBox(
-            child: Image.asset('assets/images/background.jpg'),
-              ),
+    return DecoratedBox(
+      decoration: const BoxDecoration(
+        image: DecorationImage(
+          fit: BoxFit.fitWidth,
+          image: AssetImage('assets/images/background.jpg'),
         ),
-        Container(
-          margin:const  EdgeInsets.all(20),
-          height: 148,
-          clipBehavior: Clip.hardEdge,
-          decoration: const BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(10))
-          ),
-          child: Image.asset('assets/images/movie.jpg'),
-        )
-   ],
+      ),
+      child: Container(
+        alignment: Alignment.topLeft,
+        margin:const  EdgeInsets.all(20),
+        height: 148,
+        width: MediaQuery.of(context).size.width,
+        clipBehavior: Clip.hardEdge,
+        decoration: const BoxDecoration(
+          borderRadius: BorderRadius.all(Radius.circular(10))
+        ),
+        child: Image.asset('assets/images/movie.jpg'),
+      ),
     );
   }
 }

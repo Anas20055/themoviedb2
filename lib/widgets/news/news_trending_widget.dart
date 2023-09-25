@@ -1,31 +1,49 @@
 import 'package:flutter/material.dart';
 import 'package:themovedb/widgets/common/radial_percent_widget.dart';
 
-class NewsTrendingWidget extends StatelessWidget {
+class NewsTrendingWidget extends StatefulWidget {
   const NewsTrendingWidget({super.key});
 
   @override
+  State<NewsTrendingWidget> createState() => _NewsTrendingWidgetState();
+}
+
+class _NewsTrendingWidgetState extends State<NewsTrendingWidget> {
+  final ScrollController myController = ScrollController();
+  @override
   Widget build(BuildContext context) {
-    final ScrollController myController = ScrollController();
     return Stack(
       children: [
-        Column(
-          children: [
-            const SizedBox(height: 180,),
-            Image.asset('assets/images/backImage.png'),
-          ]),
+        Column(children: [
+          const SizedBox(
+            height: 180,
+          ),
+          Image.asset('assets/images/backImage.png'),
+        ]),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-           children: [
-          const Padding(
-            padding: EdgeInsets.only(left: 20, bottom: 20, top: 20),
-            child: Text(
-              'Trending',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+          children: [
+          Padding(
+            padding: const EdgeInsets.only(left: 20, bottom: 20, top: 20,right: 20),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text('Trending',
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                ),
+                DropdownButton(
+                  value: 'Today',
+                  items:const  [
+                    DropdownMenuItem(value: 'Today',child: Text('Today'),),
+                    DropdownMenuItem(value: 'This Week',child: Text('This Week'),)
+                  ],
+                   onChanged: (fsdf){}
+                   )
+              ],
             ),
           ),
           SizedBox(
-            height: 410,
+            height: 360,
             width: MediaQuery.of(context).size.width,
             child: Scrollbar(
               controller: myController,
@@ -39,18 +57,33 @@ class NewsTrendingWidget extends StatelessWidget {
                   itemBuilder: (context, index) {
                     return Stack(
                       children: [
-                        Column(
-                          children: [
-                            Container(
-                                height: 225,
-                                margin: const EdgeInsets.fromLTRB(20, 0, 0, 16),
-                                decoration: const BoxDecoration(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(7)),
-                                ),
-                                clipBehavior: Clip.hardEdge,
-                                child: Image.asset('assets/images/movie.jpg')),
-                          ],
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(20, 0, 0, 16),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                  height: 225,
+                                  decoration: const BoxDecoration(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(7)),
+                                  ),
+                                  clipBehavior: Clip.hardEdge,
+                                  child:
+                                      Image.asset('assets/images/movie.jpg')),
+                              const SizedBox(
+                                height: 30,
+                              ),
+                              const Text(
+                                'Spider-Man: Across the Spider-Verse',
+                                style: TextStyle(
+                                    fontSize: 17, fontWeight: FontWeight.bold),
+                              ),
+                              const Text('Jun 17 2023',
+                                  style: TextStyle(
+                                      fontSize: 16, color: Colors.grey))
+                            ],
+                          ),
                         ),
                         const Positioned(
                           left: 28,
@@ -75,12 +108,11 @@ class NewsTrendingWidget extends StatelessWidget {
                           top: 10,
                           right: 10,
                           child: Container(
-                            decoration: BoxDecoration(
-                              color: Colors.grey.withOpacity(0.7),
-                              borderRadius: const BorderRadius.all(Radius.circular(10))
-                            ),
-                            child: const Icon(Icons.more_horiz)
-                            ),
+                              decoration: BoxDecoration(
+                                  color: Colors.grey.withOpacity(0.7),
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(10))),
+                              child: const Icon(Icons.more_horiz)),
                         )
                       ],
                     );
