@@ -27,7 +27,12 @@ class _TopPosterWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Image.asset('assets/images/background.jpg'),
+        SizedBox(
+          height: 180,
+          child: FittedBox(
+            child: Image.asset('assets/images/background.jpg'),
+              ),
+        ),
         Container(
           margin:const  EdgeInsets.all(20),
           height: 148,

@@ -5,6 +5,7 @@ class MovieDetailsCastWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ScrollController myController = ScrollController();
     return ColoredBox(
       color: Colors.white,
       child: Padding(
@@ -20,9 +21,11 @@ class MovieDetailsCastWidget extends StatelessWidget {
               height: 280,
               child: Scrollbar(
                 thickness: 8,
-                radius: Radius.circular(10),
+                radius: const Radius.circular(10),
+                controller: myController,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
+                  controller: myController,
                   itemCount: 8,
                   itemExtent: 140,
                   itemBuilder: (context, index) {
