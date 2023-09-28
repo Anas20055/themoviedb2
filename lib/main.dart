@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:themovedb/Theme/app_colors.dart';
+import 'package:themovedb/widgets/auth/auth_model.dart';
 import 'package:themovedb/widgets/main_screen/main_screen.dart';
 import 'package:themovedb/widgets/movie_details/movie_details_widget.dart';
 
@@ -36,7 +37,10 @@ class _MyAppState extends State<MyApp> {
 
       ),
       routes: {
-        '/auth' :(context) => const AuthWidget(),
+        '/auth' :(context) => AuthProvider(
+          model:AuthModel() ,
+          child:const  AuthWidget(),
+          ),
         '/main_screen':(context) =>const  MainScreen(),
         '/main_screen/movie_details':(context){
           final  id = ModalRoute.of(context)?.settings.arguments;
