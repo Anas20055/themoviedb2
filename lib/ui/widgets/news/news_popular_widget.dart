@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:themovedb/widgets/common/radial_percent_widget.dart';
+import 'package:themovedb/ui/widgets/common/radial_percent_widget.dart';
 
-class NewsFreeToWatchWidget extends StatefulWidget {
-  const NewsFreeToWatchWidget({super.key});
+class NewsPopularWidget extends StatefulWidget {
+  const NewsPopularWidget({super.key});
 
   @override
-  State<NewsFreeToWatchWidget> createState() => _NewsFreeToWatchWidgetState();
+  State<NewsPopularWidget> createState() => _NewsPopularWidgetState();
 }
 
-class _NewsFreeToWatchWidgetState extends State<NewsFreeToWatchWidget> {
+class _NewsPopularWidgetState extends State<NewsPopularWidget> {
   final ScrollController myController = ScrollController();
   @override
   Widget build(BuildContext context) {
@@ -20,14 +20,16 @@ class _NewsFreeToWatchWidgetState extends State<NewsFreeToWatchWidget> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Text('Free To Watch',
+            const Text('What\'s Popular',
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             DropdownButton(
-              value: 'Movies',
+              value: 'Streaming',
               items:const  [
-                DropdownMenuItem(value: 'Movies',child: Text('Movies'),),
-                DropdownMenuItem(value: 'TV',child: Text('TV'),)
+                DropdownMenuItem(value: 'Streaming',child: Text('Streaming'),),
+                DropdownMenuItem(value: 'On TV',child: Text('On TV'),),
+                DropdownMenuItem(value: 'For Rent',child: Text('For Rent'),),
+                DropdownMenuItem(value: 'In Teaters',child: Text('In Teaters'),)
               ],
                onChanged: (fsdf){}
                )

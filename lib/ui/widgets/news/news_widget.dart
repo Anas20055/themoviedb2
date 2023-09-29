@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:themovedb/widgets/news/news_free_to_wactch.dart';
-import 'package:themovedb/widgets/news/news_popular_widget.dart';
-import 'package:themovedb/widgets/news/news_trailer_widget.dart';
-import 'package:themovedb/widgets/news/news_trending_widget.dart';
+import 'package:themovedb/ui/widgets/news/news_free_to_wactch.dart';
+import 'package:themovedb/ui/widgets/news/news_popular_widget.dart';
+import 'package:themovedb/ui/widgets/news/news_trailer_widget.dart';
+import 'package:themovedb/ui/widgets/news/news_trending_widget.dart';
 
 class NewsWidget extends StatelessWidget {
   const NewsWidget({super.key});

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:themovedb/Theme/app_button_style.dart';
-import 'package:themovedb/widgets/auth/auth_model.dart';
-import 'package:themovedb/widgets/common/common_widgets.dart';
+import 'package:themovedb/ui/Theme/app_button_style.dart';
+import 'package:themovedb/ui/widgets/auth/auth_model.dart';
+import 'package:themovedb/ui/widgets/common/common_widgets.dart';
 
 class AuthWidget extends StatefulWidget {
   const AuthWidget({super.key});
@@ -74,7 +74,7 @@ class _FormWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final model = AuthProvider.of(context)?.model;
+    final model = NotifierProvider.of<AuthModel>(context);
     const textStyle = TextStyle(fontSize: 16);
     const textfildDecoration = InputDecoration(
         border: OutlineInputBorder(),
@@ -115,7 +115,7 @@ class _FormWidget extends StatelessWidget {
         const SizedBox(
           height: 20,
         ),
-        const _ErrorMessage(),
+        const _ErrorMessageWidget(),
         Row(
           children: [
             const _AuthButtomWidget(),
@@ -135,12 +135,12 @@ class _FormWidget extends StatelessWidget {
   }
 }
 
-class _ErrorMessage extends StatelessWidget {
-  const _ErrorMessage({super.key});
+class _ErrorMessageWidget extends StatelessWidget {
+  const _ErrorMessageWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final errorMessage = AuthProvider.of(context)?.model.errorMessage;
+    final errorMessage = NotifierProvider.of<AuthModel>(context)?.errorMessage;
     return errorMessage == null
         ? const SizedBox.shrink()
         : Padding(
@@ -161,7 +161,7 @@ class _AuthButtomWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final model = AuthProvider.of(context)?.model;
+    final model = NotifierProvider.of<AuthModel>(context);
     final onPressed= model?.canStartAuth == true ? ()=> model?.auth(context) : null;
     final child = model?.isAuth == true ? 
       const SizedBox(

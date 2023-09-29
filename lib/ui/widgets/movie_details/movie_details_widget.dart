@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:themovedb/widgets/common/common_widgets.dart';
-import 'package:themovedb/widgets/movie_details/movie_details_cast_widget.dart';
-import 'package:themovedb/widgets/movie_details/movie_details_main_info_widget.dart';
+import 'package:themovedb/ui/widgets/common/common_widgets.dart';
+import 'package:themovedb/ui/widgets/movie_details/movie_details_cast_widget.dart';
+import 'package:themovedb/ui/widgets/movie_details/movie_details_main_info_widget.dart';
 
 
 class MovieDetailsWidget extends StatefulWidget {

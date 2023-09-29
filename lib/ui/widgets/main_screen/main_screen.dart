@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:themovedb/widgets/common/common_widgets.dart';
-import 'package:themovedb/widgets/movie_list_widget/movie_list_widget.dart';
-import 'package:themovedb/widgets/news/news_widget.dart';
-import 'package:themovedb/widgets/tv_show_list_widget/tv_show_list_widget.dart';
+import 'package:themovedb/ui/widgets/common/common_widgets.dart';
+import 'package:themovedb/ui/widgets/movie_list_widget/movie_list_widget.dart';
+import 'package:themovedb/ui/widgets/news/news_widget.dart';
+import 'package:themovedb/ui/widgets/tv_show_list_widget/tv_show_list_widget.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -13,7 +13,7 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   // ignore: unused_field
-  int  _selectedTab = 1;
+  int  _selectedTab = 0;
   void _onSelecedTab (int index){
     if(_selectedTab == index) return;
     _selectedTab = index;

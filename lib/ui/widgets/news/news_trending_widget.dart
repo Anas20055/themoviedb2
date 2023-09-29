@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:themovedb/widgets/common/radial_percent_widget.dart';
+import 'package:themovedb/ui/widgets/common/radial_percent_widget.dart';
 
 class NewsTrendingWidget extends StatefulWidget {
   const NewsTrendingWidget({super.key});
@@ -38,7 +38,7 @@ class _NewsTrendingWidgetState extends State<NewsTrendingWidget> {
                     DropdownMenuItem(value: 'This Week',child: Text('This Week'),)
                   ],
                    onChanged: (fsdf){}
-                   )
+                   ),
               ],
             ),
           ),

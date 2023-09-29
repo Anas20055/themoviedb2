@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:themovedb/domain/dataProvider/session_data_provider.dart';
 
 
 Drawer drawer(BuildContext context){
@@ -75,7 +76,10 @@ AppBar appBar (){
           ),
         actions: [
           IconButton(
-            onPressed: (){}, 
+            onPressed: (){
+              SessionDataProvider().setSessionId(null);
+              print('dssdf');
+            }, 
             icon: const Icon(           
                Icons.person,
               )

@@ -4,6 +4,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:themovedb/domain/api_client/api_client.dart';
 import 'package:themovedb/domain/dataProvider/session_data_provider.dart';
+import 'package:themovedb/ui/navigation/main_navigation.dart';
 
 class AuthModel extends ChangeNotifier{
   final _apiClient = ApiClient();
@@ -49,16 +50,18 @@ class AuthModel extends ChangeNotifier{
     }
     await _sessionDataProvider.setSessionId(sessionId);
     // ignore: use_build_context_synchronously
-    unawaited(Navigator.of(context).pushReplacementNamed('/main_screen'));
+    unawaited(Navigator.of(context).pushReplacementNamed(MainNavigationRouteNames.mainScreen));
 
 
   }
 }
 
-class AuthProvider extends InheritedNotifier {
+
+
+class NotifierProvider<Model extends ChangeNotifier> extends InheritedNotifier {
   final Widget child;
-  final AuthModel model;
-  const AuthProvider({
+  final Model model;
+  const NotifierProvider({
     super.key,
     required this.child,
     required this.model
@@ -68,8 +71,9 @@ class AuthProvider extends InheritedNotifier {
       );
 
 
-  static AuthProvider? of(BuildContext context) {
-    return context.dependOnInheritedWidgetOfExactType<AuthProvider>();
+  static Model? of<Model extends ChangeNotifier>(BuildContext context) {
+    return context.dependOnInheritedWidgetOfExactType<NotifierProvider<Model>>()?.model;
   }
 
 }
+

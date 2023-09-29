@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:themovedb/widgets/common/radial_percent_widget.dart';
+import 'package:themovedb/ui/widgets/common/radial_percent_widget.dart';
 
 class MovieDetailsInfoWidget extends StatelessWidget {
   const MovieDetailsInfoWidget({super.key});

@@ -71,7 +71,7 @@ class ApiClient {
 }
 
 extension HttpClientResponceJsonDecode on HttpClientResponse {
-  Future<dynamic> jsonDecode() async => transform(utf8.decoder)
+  Future<dynamic> jsonDecode() async =>await  transform(utf8.decoder)
       .toList()
       .then((value) => value.join())
       .then((value) => json.decode(value) as Map<String, dynamic>);

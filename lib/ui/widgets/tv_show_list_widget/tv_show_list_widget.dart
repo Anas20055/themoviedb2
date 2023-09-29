@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:themovedb/ui/navigation/main_navigation.dart';
 
-class Movie {
+class TVShow {
   final int id;
   final String imagePath;
   final String title;
   final String time;
   final String description;
 
-  Movie({
+  TVShow({
     required this.id,
     required this.imagePath,
     required this.title, 
@@ -18,36 +19,36 @@ class Movie {
 
 }
 
-class MovieListWidget extends StatefulWidget {
-  const MovieListWidget({super.key});
+class TVShowListWidget extends StatefulWidget {
+  const TVShowListWidget({super.key});
 
   @override
-  State<MovieListWidget> createState() => _MovieListWidgetState();
+  State<TVShowListWidget> createState() => _TVShowListWidgetState();
 }
-class _MovieListWidgetState extends State<MovieListWidget> {
+class _TVShowListWidgetState extends State<TVShowListWidget> {
   final _movies = [
-    Movie(
+    TVShow(
       id:1,
       imagePath: 'assets/images/movie.jpg',
       title:'Spider-Man: Across the Spider-Verse',
       time:'May 31, 2023',
       description: 'After reuniting with Gwen Stacy, Brooklyn’s full-time, friendly neighborhood'
       ),
-    Movie(
+    TVShow(
       id:2,
       imagePath: 'assets/images/movie.jpg',
       title:'Flash',
       time:'May 31, 2023',
       description: 'After reuniting with Gwen Stacy, Brooklyn’s full-time, friendly neighborhood'
       ),
-    Movie(
+    TVShow(
       id:3,
       imagePath: 'assets/images/movie.jpg',
       title:'Captain America',
       time:'May 31, 2023',
       description: 'After reuniting with Gwen Stacy, Brooklyn’s full-time, friendly neighborhood'
       ),
-    Movie(
+    TVShow(
       id:4,
       imagePath: 'assets/images/movie.jpg',
       title:'Iron-man',
@@ -57,13 +58,13 @@ class _MovieListWidgetState extends State<MovieListWidget> {
   ];
 
   // ignore: unused_field
-  List<Movie> _filteredMovies= [];
+  List<TVShow> _filteredMovies= [];
   final _searchController = TextEditingController();
 
   void _searchMovies(){
     final query = _searchController.text;
     if(query.isNotEmpty){
-      _filteredMovies = _movies.where((Movie movie) => movie.title.toLowerCase().contains(query.toLowerCase())
+      _filteredMovies = _movies.where((TVShow movie) => movie.title.toLowerCase().contains(query.toLowerCase())
       ).toList();
     }else{
       _filteredMovies = _movies;
@@ -80,7 +81,7 @@ class _MovieListWidgetState extends State<MovieListWidget> {
 
   void _onMovieTab(int index){
     int id = _filteredMovies[index].id;
-    Navigator.of(context).pushNamed('/main_screen/movie_details',arguments: id);
+    Navigator.of(context).pushNamed(MainNavigationRouteNames.movieDetails,arguments: id);
   }
   @override
   Widget build(BuildContext context) {
